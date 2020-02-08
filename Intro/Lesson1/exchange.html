@@ -1,0 +1,15 @@
+<meta charset = "utf-8">
+<script>
+    var usd_course = 62.60;
+    var eur_course = 68.91;
+    var roubles = prompt("Привет! \n У менялы Сулеймана все по-честному, без обмана)) \n Сколько рублей меняем?");
+  
+    roubles = parseInt(roubles);
+    if (isNaN(roubles)) 
+        alert("Ну ты и шутник!"); 
+    else if (roubles >= 0)
+        alert("Могу поменять на " + (roubles / usd_course).toFixed(2) + " долларов\nили на " + (roubles / eur_course).toFixed(2) + " Евро. Ну что, берем?"); 
+    else 
+        alert("Спасибо, что помнишь о долге! Отдавай свои " + (-roubles) + " деревянных и заноси еще!))"); 
+
+</script>

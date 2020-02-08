@@ -1,0 +1,70 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    var max_attempts = 10, attempt_number = 1;
+    var user_answer = 0;
+    var current_user_id = 1;
+    var computer_number = parseInt((Math.random() * 100) + 1);
+    var user1_out = false, user2_out = false;
+    var done = false, exit_code = 0;
+    var user1_name = prompt("Введите имя первого игрока");
+    var user2_name = prompt("Введите имя второго игрока");
+    //в Chrome document.write работает не так как ожидается (выводит все скопом, когда программа завершится)
+    //Поэтому некоторые  document.write продублированы alert'ом
+    document.write("<br><br>" + user1_name + " и " + user2_name + '! Добро пожаловать на игру "Угадай число"!');
+    document.write("<br><br> Компьютер загадал число в интервале от 1 до 100. У вас на двоих " + max_attempts + " попыток. Начинаем угадывать! <br><br>");
+    alert(user1_name + " и " + user2_name + '! Добро пожаловать на игру "Угадай число"!\n Компьютер загадал число в интервале от 1 до 100. У вас на двоих ' + max_attempts + " попыток. Начинаем угадывать!");
+
+    for (attempt_number = 1; attempt_number <= max_attempts; attempt_number++) {
+        done = false;
+        document.write("Попытка № " + attempt_number + ". " + (current_user_id == 1 ? user1_name : user2_name) + ", Ваше число: ");
+        do {
+            user_answer = +prompt("Попытка № " + attempt_number + "\n" + (current_user_id == 1 ? user1_name : user2_name) + ', ваш ход! Напишите число от 1 до 100. Если сдаетесь введите "0" или оставьте поле пустым:');
+            if(!isNaN(user_answer) && (user_answer >= 0) && (user_answer <= 100))  done = true; 
+              else alert("Вы ввели что-то не то. Повторите ввод, пожалуйста!")
+        } while (!done);
+
+        //проверяем, не сдался ли игрок
+        if (user_answer == 0) { 
+            document.write("Я сдаюсь<br>");
+            if(current_user_id == 1) user1_out = true;
+              else user2_out = true;
+            //если уже сдались оба - компьютер победил и выходим.
+            if(user1_out && user2_out) {
+                document.write("Все сдались, компьютер победил! Было загадано число " + computer_number);
+                alert("Все сдались, компьютер победил! Было загадано число " + computer_number);
+                exit_code = 1; //выходим из цикла с exit_code = 1
+                break; 
+            }
+            //иначе - меняем игрока и продолжаем
+            current_user_id = 3 - current_user_id;        
+            continue; 
+        }
+
+        //здесь игрок current_user_id написал число
+        //выводим число игрока
+        document.write(" " + user_answer + "<br>");
+        if (user_answer == computer_number) {
+            document.write("Поздравляем! " + (current_user_id == 1 ? user1_name : user2_name) + " победил! Было загадано число " + computer_number);
+            alert("Поздравляем! " + (current_user_id == 1 ? user1_name : user2_name) + " победил! Было загадано число " + computer_number);
+            exit_code = 1; //выходим из цикла с exit_code = 1
+            break;
+        }
+
+        //игра продолжается
+        //проверяем введенное число
+        if (user_answer > computer_number) {
+            document.write("Мое число меньше " + user_answer + "<br>");
+            alert("Мое число меньше " + user_answer);
+        }
+        else {
+            document.write("Мое число больше " + user_answer + "<br>");
+            alert("Мое число больше " + user_answer);
+        } 
+        if((!user1_out) && (!user2_out)) current_user_id = 3 - current_user_id; //если еще никто не сдался - меняем игрока
+    }
+    if(exit_code == 0) {
+        document.write("У вас закончились попытки, компьютер победил! Было загадано число " + computer_number);
+        alert("У вас закончились попытки, компьютер победил! Было загадано число " + computer_number);
+    }
+
+</script>

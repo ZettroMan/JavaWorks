@@ -1,0 +1,23 @@
+<meta charset = "utf-8">
+<script type="text/javascript">
+    
+    var deposit = +prompt("Введите размер вклада:");
+    var rate = +prompt("Введите процентную ставку:");
+    if(isNaN(deposit) || isNaN(rate) || (deposit < 0) || (rate < 0)) {
+        alert("Введены некорректные значения");
+        exit();
+    }
+
+    var income = 0.0;
+    var year = 0;
+    document.write("<br>Программа рассчета дохода по вкладу<br><br>");
+    document.write("Начальный размер вклада: " + deposit + " рублей<br>");
+    document.write("Процентная ставка: " + rate + "%<br><br>");
+    rate = rate / 100;
+    for (year = 1; year <= 5; year++)  {
+        income = deposit * rate;
+        deposit += parseFloat(income.toFixed(2));
+        document.write("За " + year + " год доход составил " + income.toFixed(2) + " рублей. На счёте " + deposit.toFixed(2) + " рублей.<br>");   
+    }
+
+</script>

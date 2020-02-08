@@ -1,0 +1,64 @@
+<meta charset = "utf-8">
+<script type="text/javascript">
+    
+    //!!! Не использовал массивы, так как мы их еще не проходили. 
+    //Поэтому далее - простой и беспощадный копипаст, без циклов ;) 
+    var riddle1 = '"Зимой и летом одним цветом."';
+    var riddle2 = '"Два конца, два кольца, посередине гвоздик."';
+    var riddle3 = '"К нам приехали с бахчи полосатые мячи"';
+    var riddle4 = '"Льется речка — мы лежим. Лед на речке — мы бежим."';
+    var riddle5 = '"Красна девица сидит в темнице, а коса на улице."';
+    var answer, mark;
+    var num_riddles = 5, right_answers = 0;
+    
+    alert("Поиграем в загадки?");
+    answer = prompt("Тогда вот первая: " + riddle1)
+    answer = answer.toLowerCase();
+    if(answer == "елка" || answer == "ёлка" || answer == "ель") {
+        right_answers++;
+        alert("Поздравляем! Ты угадал!");
+    }
+    else  alert("А вот и не угадал. Это Ёлка! Хотя, " + answer + ", наверное, тоже цвет нечасто меняет))");
+ 
+    answer = prompt("Вот тебе вторая загадка: " + riddle2)
+    answer = answer.toLowerCase();
+    if(answer == "ножницы") {
+        right_answers++;
+        alert("Да ты знал!!!");
+    }
+    else  alert("Мимо! Это ножницы!");
+ 
+    answer = prompt("Еще одна загадка: " + riddle3)
+    answer = answer.toLowerCase();
+    if(answer == "арбуз" || answer == "арбузы") {
+        right_answers++;
+        alert("Точно!");
+    }
+    else alert("Нет, это арбуз. Ну ничего, ничего. Следующую точно угадаешь!)");
+ 
+    answer = prompt("Как ты думаешь, что это: " + riddle4)
+    answer = answer.toLowerCase();
+    if(answer == "коньки") {
+        right_answers++;
+        alert("Замечательно!");
+    }
+    else alert("Не угадал (. Зато теперь будешь знать, что это коньки!");
+ 
+    answer = prompt("И последняя загадка: " + riddle5)
+    answer = answer.toLowerCase();
+    if(answer == "морковь" || answer == "морковка") {
+        right_answers++;
+        alert("Опять в точку!");
+    }
+    else alert("Увы. Это морковка!");
+    
+    switch(right_answers){
+        case 5: mark = "Превосходный результат!"; break;
+        case 4: mark = "Замечательно!"; break;
+        case 3: mark = "Неплохо!"; break;
+        default: mark = "Не расстраивайся!";
+    }
+    
+    alert("Подведем итоги! Из 5 загадок тебе удалось отгадать " + right_answers + "! " + mark);
+
+</script>

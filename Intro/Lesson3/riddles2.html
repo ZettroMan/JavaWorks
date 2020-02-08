@@ -1,0 +1,45 @@
+<meta charset = "utf-8">
+<script type="text/javascript">
+    
+    function playRiddle(riddle, number) {
+        //Загадываем загадку
+        var result, i;
+        var answer = prompt("Загадка № " + number + ":\n\n" + riddle[0] + "\n\nВведите ответ: \n")
+        if(answer == null) return 0;
+        answer = answer.toLowerCase();
+        result = checkRiddle(riddle, answer);
+        if(result == 1) alert("Правильно! Ты угадал!");
+        else alert("Не угадал :(");
+        return result;
+    }
+
+    function checkRiddle(riddle, answer) {
+        //проверяем правильность ответа
+        for(var i = 1; i < riddle.length; i++)
+            if(answer == riddle[i]) return 1;
+        return 0;            
+    }
+
+    var riddles = [['"Зимой и летом одним цветом."', "елка", "ёлка", "ель"],
+                   ['"Два конца, два кольца, посередине гвоздик."', "ножницы"],
+                   ['"К нам приехали с бахчи полосатые мячи"', "арбуз", "арбузы"],
+                   ['"Льется речка — мы лежим. Лед на речке — мы бежим."', "коньки"],
+                   ['"Красна девица сидит в темнице, а коса на улице."', "морковь", "морковка"]];
+
+    var mark;
+    right_answers = 0;
+    
+    alert("Поиграем в загадки?");
+    for (i = 0; i < riddles.length; i++) 
+       right_answers += playRiddle(riddles[i], i + 1);
+    
+    switch(right_answers) {
+        case 5: mark = "Превосходный результат!"; break;
+        case 4: mark = "Замечательно!"; break;
+        case 3: mark = "Неплохо!"; break;
+        default: mark = "Не расстраивайся!";
+    }
+    
+    alert("Подведем итоги! Из 5 загадок тебе удалось отгадать " + right_answers + "! " + mark);
+
+</script>
