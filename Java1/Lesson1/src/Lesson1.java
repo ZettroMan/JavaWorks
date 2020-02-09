@@ -26,5 +26,13 @@ public class Lesson1 {
         System.out.println("char_var2 = " + char_var2);
         System.out.println("bool_var = " + bool_var);
         System.out.println("my_string = " + my_string);
+
+        //проверяем работу метода calculate()
+        System.out.println(calculate(int_var, long_var, float_var, double_var2));
     }
+
+    public static double calculate(double a, double b, double c, double d) {
+        return (a * (b + (c / d)));
+    }
+
 }
