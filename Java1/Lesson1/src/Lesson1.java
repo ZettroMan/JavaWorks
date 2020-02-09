@@ -45,6 +45,11 @@ public class Lesson1 {
         System.out.println(is_negative(-45)); // true
         System.out.println(is_negative(0));   // false
 
+        //Всем привет))
+        print_greeting("Вася");
+        print_greeting("Петя");
+        print_greeting("Изаура и Женуария");
+
     }
 
     public static double calculate(double a, double b, double c, double d) {
@@ -64,6 +69,10 @@ public class Lesson1 {
 
     public static boolean is_negative(int a) {
         return a < 0;
+    }
+
+    public static void print_greeting(String name) {
+        System.out.println("Привет, " + name + "!");
     }
 
 }
