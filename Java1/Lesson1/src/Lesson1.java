@@ -39,6 +39,12 @@ public class Lesson1 {
         print_neg_or_pos(34);
         print_neg_or_pos(-15);
         print_neg_or_pos(0);
+
+        //проверяем метод is_negative()
+        System.out.println(is_negative(15));  // false
+        System.out.println(is_negative(-45)); // true
+        System.out.println(is_negative(0));   // false
+
     }
 
     public static double calculate(double a, double b, double c, double d) {
@@ -54,6 +60,10 @@ public class Lesson1 {
     public static void print_neg_or_pos(int value) {
         if(value < 0) System.out.println("Число " + value + " отрицательное");
         else System.out.println("Число " + value + " положительное");
+    }
+
+    public static boolean is_negative(int a) {
+        return a < 0;
     }
 
 }
