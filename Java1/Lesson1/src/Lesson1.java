@@ -50,6 +50,24 @@ public class Lesson1 {
         print_greeting("Петя");
         print_greeting("Изаура и Женуария");
 
+        //Проверка на високосность
+        System.out.println("");
+        check_leap_year(-654);  // слишком рано, не было такого понятия
+        check_leap_year(-40);   // не високосный
+        check_leap_year(-33);   // високосный
+        check_leap_year(-15);   // не високосный
+        check_leap_year(-1);    // високосный
+        check_leap_year(0);     // не было такого года
+        check_leap_year(3);     // не високосный
+        check_leap_year(4);     // високосный
+        check_leap_year(1224);  // високосный
+        check_leap_year(1453);  // не високосный
+        check_leap_year(1584);  // високосный
+        check_leap_year(1600);  // високосный
+        check_leap_year(1800);  // не високосный
+        check_leap_year(2000);  // високосный
+        check_leap_year(24356);  // високосный
+
     }
 
     public static double calculate(double a, double b, double c, double d) {
@@ -58,21 +76,56 @@ public class Lesson1 {
 
     //написал для int, аналогично можно и для long, float и double
     public static boolean check_condition(int a, int b) {
-        return (((a + b) >= 10) &&  ((a + b) <= 20));
+        return (((a + b) >= 10) && ((a + b) <= 20));
     }
 
     //тело if без {} ибо в одну строку))
     public static void print_neg_or_pos(int value) {
-        if(value < 0) System.out.println("Число " + value + " отрицательное");
+        if (value < 0) System.out.println("Число " + value + " отрицательное");
         else System.out.println("Число " + value + " положительное");
     }
 
+    //Проверяет, отрицательное ли число или нет
     public static boolean is_negative(int a) {
         return a < 0;
     }
 
+    //Выводит в консоль приветствие
     public static void print_greeting(String name) {
         System.out.println("Привет, " + name + "!");
+    }
+
+    /*Выводит в консоль - високосный год (параметр year) или нет.
+     Положительные значения year соответствуют годам нашей эры, отрицательные - годам до нашей эры.
+     Понятие "високосный год" было введено Юлием Цезарем с 1 января 45 г. до нашей эры.
+     Это был первый високосный год. Прошу заметить - нечетное значение, так как 0 года нашей эры не существует.
+     Есть 1 год до н.э. и 1 год н.э. Т.е. -1 + 1 = 1 ))) Вот такая арифметика.
+     До 1582 года н.э. каждый четвертый год, начиная с 45 г. до н.э. был високосным.
+     С 1582 года н.э., когда папа римский Григорий XIII провёл реформу календаря, стали применяться правила,
+     описанные в задании.
+     Метод check_leap_year() учитывает данные исторические нюансы. */
+    public static void check_leap_year(int year) {
+        if (year == 0) {
+            System.out.println("Вы ошиблись. Нулевого года нет в календаре.");
+            return;
+        }
+        if (year < -45) {
+            //В С++ меня бы за такое сложение int+String, наверное, убили бы... А Java позволяет)). Буду привыкать.
+            System.out.println((-year) + " год до н.э. не високосный. Первый високосный год - 45 г. до н.э.");
+            return;
+        }
+
+        if (year < 0) {
+            if ((year + 1) % 4 == 0) System.out.println((-year) + " год до н.э. - високосный.");
+            else System.out.println((-year) + " год до н.э. - не високосный.");
+        } else if (year < 1582) {
+            if (year % 4 == 0) System.out.println(year + " год - високосный.");
+            else System.out.println(year + " год - не високосный.");
+        } else {
+            if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0)))
+                System.out.println(year + " год - високосный");
+            else System.out.println(year + " год - не високосный");
+        }
     }
 
 }
