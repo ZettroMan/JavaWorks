@@ -35,6 +35,10 @@ public class Lesson1 {
         System.out.println(check_condition(2, 7));  // false
         System.out.println(check_condition(13, 9)); // false
 
+        //проверяем метод print_neg_or_pos()
+        print_neg_or_pos(34);
+        print_neg_or_pos(-15);
+        print_neg_or_pos(0);
     }
 
     public static double calculate(double a, double b, double c, double d) {
@@ -44,6 +48,12 @@ public class Lesson1 {
     //написал для int, аналогично можно и для long, float и double
     public static boolean check_condition(int a, int b) {
         return (((a + b) >= 10) &&  ((a + b) <= 20));
+    }
+
+    //тело if без {} ибо в одну строку))
+    public static void print_neg_or_pos(int value) {
+        if(value < 0) System.out.println("Число " + value + " отрицательное");
+        else System.out.println("Число " + value + " положительное");
     }
 
 }
