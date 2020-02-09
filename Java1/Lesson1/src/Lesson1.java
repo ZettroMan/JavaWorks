@@ -29,10 +29,21 @@ public class Lesson1 {
 
         //проверяем работу метода calculate()
         System.out.println(calculate(int_var, long_var, float_var, double_var2));
+
+        //проверяем работу метода check_condition()
+        System.out.println(check_condition(12, 5)); // true
+        System.out.println(check_condition(2, 7));  // false
+        System.out.println(check_condition(13, 9)); // false
+
     }
 
     public static double calculate(double a, double b, double c, double d) {
         return (a * (b + (c / d)));
+    }
+
+    //написал для int, аналогично можно и для long, float и double
+    public static boolean check_condition(int a, int b) {
+        return (((a + b) >= 10) &&  ((a + b) <= 20));
     }
 
 }
